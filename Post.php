@@ -1,6 +1,6 @@
 <?php
 
-class Post {
+class Post implements JsonSerializable {
     private $title;
     private $date;
     private $content;
@@ -29,7 +29,14 @@ class Post {
         return $this->authorName;
     }
 
-    // public function addPost(){
+    public function jsonSerialize() {
+        return ['title' => $this->getTitle(), 'date' => $this->getDate(), 'content' => $this->getContent(), 'authorName' => $this->getAuthorName()];
+    }
 
-    // }
+    public function getAllInfo() {
+        return $this->title;
+        return $this->date;
+        return $this->content;
+        return $this->authorName;
+    }
 }
