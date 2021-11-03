@@ -6,12 +6,6 @@ $date = date("d M Y, H:i");
 $content = "";
 $authorName = "";
 $file = 'guestbook.json';
-$posts = file_get_contents($file);
-var_dump($posts);
-$sd = json_decode($posts);
-var_dump($sd);
-$aw = json_encode($posts);
-var_dump($aw);
 if (isset($_POST['title'])) {
     $title = $_POST['title'];
 }
@@ -29,19 +23,14 @@ if (isset($_POST['authorName'])) {
 //2. add new post to post array
 //3. save to file
 if (isset($_POST['submit'])) {
+    $posts = file_get_contents($file);
+    var_dump($posts);
     $data = new Post($title, $date, $content, $authorName); // this is an object with private properties
     var_dump($data);
     $newPost = $data->jsonSerialize(); // this is the array with all the content
     var_dump($newPost);
-    $newPostEncoded = json_encode($newPost); // this is the encoded content, it's a string between {}
+    $newPostEncoded = json_encode($newPost); // this makes the array as a string between {}
     var_dump($newPostEncoded);
-    // $posts .= $newPostEncoded;
-    $df = json_encode($newPostEncoded);
-    var_dump($df);
-    var_dump($posts);
-    $d = json_encode($posts);
-    var_dump($d);
-    file_put_contents($file, $posts);
 }
 ?>
 
