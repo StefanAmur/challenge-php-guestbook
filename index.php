@@ -6,21 +6,22 @@ $date = date("d M Y, H:i");
 $content = "";
 $authorName = "";
 $file = 'guestbook.json';
-$posts = [file_get_contents($file)];
+$posts = file_get_contents($file);
 var_dump($posts);
+$sd = json_decode($posts);
+var_dump($sd);
+$aw = json_encode($posts);
+var_dump($aw);
 if (isset($_POST['title'])) {
     $title = $_POST['title'];
-    // file_put_contents($file, $title);
 }
 
 if (isset($_POST['content'])) {
     $content = $_POST['content'];
-    // file_put_contents($file, $title);
 }
 
 if (isset($_POST['authorName'])) {
     $authorName = $_POST['authorName'];
-    // file_put_contents($file, $title);
 }
 
 
@@ -28,14 +29,18 @@ if (isset($_POST['authorName'])) {
 //2. add new post to post array
 //3. save to file
 if (isset($_POST['submit'])) {
-    $data = new Post($title, $date, $content, $authorName);
-    // var_dump($data);
-    $newPost = $data->jsonSerialize();
+    $data = new Post($title, $date, $content, $authorName); // this is an object with private properties
+    var_dump($data);
+    $newPost = $data->jsonSerialize(); // this is the array with all the content
     var_dump($newPost);
-    $a = json_encode($newPost);
-    var_dump($a);
-    array_push($posts, $a);
+    $newPostEncoded = json_encode($newPost); // this is the encoded content, it's a string between {}
+    var_dump($newPostEncoded);
+    // $posts .= $newPostEncoded;
+    $df = json_encode($newPostEncoded);
+    var_dump($df);
     var_dump($posts);
+    $d = json_encode($posts);
+    var_dump($d);
     file_put_contents($file, $posts);
 }
 ?>
@@ -43,15 +48,13 @@ if (isset($_POST['submit'])) {
 
 <?php require 'header.html'; ?>
 
-<h1 class="title">Sign out Guestbook</h1>
+<h1 class="title">Sign our Guestbook</h1>
 <form action="./index.php" method="post">
     <label for="title">Title</label>
     <input type="text" name="title" required>
     <input type="hidden" name="date">
     <label for="content">Your message</label>
-    <textarea name="content" rows="4" cols="50" maxlength="100" required>
-
-    </textarea>
+    <textarea name="content" rows="4" cols="50" maxlength="100" required></textarea>
     <label for="authorName">Your name</label>
     <input type="text" name="authorName" required>
     <button type="submit" name="submit">Submit</button>
