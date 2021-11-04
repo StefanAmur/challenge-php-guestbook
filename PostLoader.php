@@ -22,18 +22,18 @@ class PostLoader {
     }
 
     public function getTitle($post): string {
-        return $post["data"]["title"];
+        return htmlspecialchars($post["data"]["title"], ENT_NOQUOTES);
     }
 
     public function getDate($post): string {
-        return $post["data"]["date"];
+        return htmlspecialchars($post["data"]["date"], ENT_NOQUOTES);
     }
 
     public function getContent($post): string {
-        return $post["data"]["content"];
+        return htmlspecialchars($post["data"]["content"], ENT_NOQUOTES);
     }
 
     public function getAuthorName($post): string {
-        return $post["data"]["authorName"];
+        return htmlspecialchars($post["data"]["authorName"], ENT_NOQUOTES);
     }
 }
