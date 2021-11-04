@@ -37,7 +37,7 @@ Any visitor on te page can leave a message on your page that are then saved and 
 - ✔2️⃣Make sure the script can handle site defacement attacks: use `htmlspecialchars()`
 - ✔2️⃣Only show the latest 20 posts.
 
-> ## Nice to have features
+## Nice to have features
 
 - ❌profanity filter: at the top of your script create an array of "bad" words. If somebody tries to enter a message with those words, their messages gets rejected
 - ❌when the user enters uses a "smiley" like ":-)", ";-)", ":-(" replace it with an image of such a smiley
