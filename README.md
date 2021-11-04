@@ -41,7 +41,7 @@ Any visitor on te page can leave a message on your page that are then saved and 
 
 - ❌profanity filter: at the top of your script create an array of "bad" words. If somebody tries to enter a message with those words, their messages gets rejected
 - ❌when the user enters uses a "smiley" like ":-)", ";-)", ":-(" replace it with an image of such a smiley
-- ❌have an input field where the user can enter how many message he wants to see displayed
+- ✔2️⃣have an input field where the user can enter how many message he wants to see displayed
 
 ### Tips & advice
 
