@@ -6,6 +6,15 @@
 
 body {
   font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.title {
+  margin-top: 1.4rem;
 }
 
 form {
@@ -14,5 +23,19 @@ form {
   align-items: flex-start;
 }
 
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 .post-container {
+  width: 50vw;
+  border: 2 px solid lightblue;
+  border-radius: 8 px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
 }
