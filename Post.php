@@ -9,10 +9,10 @@ class Post implements JsonSerializable {
     private $authorName;
 
     public function __construct($title, $date, $content, $authorName) {
-        $this->title = $title;
-        $this->date = $date;
-        $this->content = $content;
-        $this->authorName = $authorName;
+        $this->title = $this->protect($title);
+        $this->date = $this->protect($date);
+        $this->content = $this->protect($content);
+        $this->authorName = $this->protect($authorName);
     }
 
     public function jsonSerialize(): array {
@@ -21,5 +21,9 @@ class Post implements JsonSerializable {
 
     public function saveToFile($array) {
         file_put_contents("guestbook.json", json_encode($array));
+    }
+
+    public function protect(string $toCheck): string {
+        return htmlSpecialchars($toCheck, ENT_NOQUOTES);
     }
 }

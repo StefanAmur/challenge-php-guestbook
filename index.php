@@ -38,6 +38,6 @@ if (isset($_POST['submit'])) {
     $allPosts = $loadPosts->getFileContent();
 }
 
-require './Views/header.html';
-require './Views/body.html';
-require './Views/footer.html';
+require './Views/header.php';
+require './Views/body.php';
+require './Views/footer.php';
