@@ -16,6 +16,10 @@ class Post implements JsonSerializable {
     }
 
     public function jsonSerialize(): array {
-        return ['title' => $this->title, 'date' => $this->date, 'content' => $this->content, 'authorName' => $this->authorName];
+        return ['data' => ['title' => $this->title, 'date' => $this->date, 'content' => $this->content, 'authorName' => $this->authorName]];
+    }
+
+    public function saveToFile($array) {
+        file_put_contents("guestbook.json", json_encode($array));
     }
 }
